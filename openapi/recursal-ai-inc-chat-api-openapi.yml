@@ -1,0 +1,258 @@
+openapi: 3.1.0
+info:
+  title: Featherless AI Serverless Inference Account Chat API
+  version: '1.0'
+  description: Faithful capture of the publicly documented, OpenAI-compatible serverless inference API operated by Recursal AI, Inc. under the Featherless AI brand. Only endpoints, methods, the Bearer security scheme, and parameters that Featherless publishes in its developer documentation are represented here; request/response schemas are intentionally minimal and honest rather than exhaustive. Base URL and auth per https://featherless.ai/docs/quickstart-guide.
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: https://featherless.ai/docs/api-overview-and-common-options
+  x-note: Featherless does not publish a machine-readable OpenAPI document (api.featherless.ai/openapi.json -> 404); this is an API Evangelist capture of the documented REST surface, not the provider's own specification.
+servers:
+- url: https://api.featherless.ai/v1
+  description: Featherless AI production inference endpoint (OpenAI-compatible)
+security:
+- bearerAuth: []
+tags:
+- name: Chat
+  description: OpenAI-compatible chat and text completion generation
+paths:
+  /chat/completions:
+    post:
+      tags:
+      - Chat
+      operationId: createChatCompletion
+      summary: Create a chat completion
+      description: Generate a model response for a chat conversation. OpenAI-compatible; set stream=true for server-sent-event token streaming.
+      parameters:
+      - $ref: '#/components/parameters/HttpReferer'
+      - $ref: '#/components/parameters/XTitle'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Chat completion response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+            text/event-stream:
+              schema:
+                type: string
+                description: Server-sent-event stream of completion chunks
+        '400':
+          $ref: '#/components/responses/ColdModel'
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+        '403':
+          $ref: '#/components/responses/GatedModel'
+        '429':
+          $ref: '#/components/responses/ConcurrencyExceeded'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/CapacityUnavailable'
+  /completions:
+    post:
+      tags:
+      - Chat
+      operationId: createCompletion
+      summary: Create a text completion
+      description: OpenAI-compatible text (prompt) completion.
+      parameters:
+      - $ref: '#/components/parameters/HttpReferer'
+      - $ref: '#/components/parameters/XTitle'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionRequest'
+      responses:
+        '200':
+          description: Text completion response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/ColdModel'
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+        '403':
+          $ref: '#/components/responses/GatedModel'
+        '429':
+          $ref: '#/components/responses/ConcurrencyExceeded'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/CapacityUnavailable'
+  /tokenize:
+    post:
+      tags:
+      - Chat
+      operationId: tokenize
+      summary: Tokenize text
+      description: Return the tokenization of the supplied text for a given model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                text:
+                  type: string
+              required:
+              - model
+              - text
+      responses:
+        '200':
+          description: Tokenization result
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+components:
+  responses:
+    InternalError:
+      description: Internal server error on Featherless infrastructure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    CapacityUnavailable:
+      description: Service temporarily unavailable due to insufficient model capacity.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ConcurrencyExceeded:
+      description: The request would exceed the plan's reserved concurrent-unit budget.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ColdModel:
+      description: The model is cold / not yet loaded into GPU for inference.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthenticated:
+      description: API key is invalid or unrecognized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    GatedModel:
+      description: The model is gated; the account must accept the model license first.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    CompletionRequest:
+      type: object
+      required:
+      - model
+      - prompt
+      properties:
+        model:
+          type: string
+        prompt:
+          type: string
+        stream:
+          type: boolean
+        max_tokens:
+          type: integer
+        temperature:
+          type: number
+    ChatMessage:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+        content:
+          type: string
+    ChatCompletionRequest:
+      type: object
+      required:
+      - model
+      - messages
+      properties:
+        model:
+          type: string
+          description: Hugging Face model id, e.g. Qwen/Qwen2.5-7B-Instruct.
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        stream:
+          type: boolean
+          description: Stream the response as server-sent events.
+        max_tokens:
+          type: integer
+        temperature:
+          type: number
+        top_p:
+          type: number
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+            code:
+              type: string
+  parameters:
+    HttpReferer:
+      name: HTTP-Referer
+      in: header
+      required: false
+      description: Optional header identifying the calling application/site.
+      schema:
+        type: string
+    XTitle:
+      name: X-Title
+      in: header
+      required: false
+      description: Optional header naming the calling application for support attribution.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Featherless API key supplied as an HTTP Bearer token (Authorization: Bearer FEATHERLESS_API_KEY). Keys are created in account settings.'

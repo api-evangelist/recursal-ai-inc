@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Featherless AI Serverless Inference Account Models API
+  version: '1.0'
+  description: Faithful capture of the publicly documented, OpenAI-compatible serverless inference API operated by Recursal AI, Inc. under the Featherless AI brand. Only endpoints, methods, the Bearer security scheme, and parameters that Featherless publishes in its developer documentation are represented here; request/response schemas are intentionally minimal and honest rather than exhaustive. Base URL and auth per https://featherless.ai/docs/quickstart-guide.
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: https://featherless.ai/docs/api-overview-and-common-options
+  x-note: Featherless does not publish a machine-readable OpenAPI document (api.featherless.ai/openapi.json -> 404); this is an API Evangelist capture of the documented REST surface, not the provider's own specification.
+servers:
+- url: https://api.featherless.ai/v1
+  description: Featherless AI production inference endpoint (OpenAI-compatible)
+security:
+- bearerAuth: []
+tags:
+- name: Models
+  description: Model catalog and metadata
+paths:
+  /models:
+    get:
+      tags:
+      - Models
+      operationId: listModels
+      summary: List available models
+      description: Return the catalog of open-weight models available for inference (thousands of models from Hugging Face).
+      responses:
+        '200':
+          description: A list of model objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelList'
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+            code:
+              type: string
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+  responses:
+    Unauthenticated:
+      description: API key is invalid or unrecognized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Featherless API key supplied as an HTTP Bearer token (Authorization: Bearer FEATHERLESS_API_KEY). Keys are created in account settings.'
