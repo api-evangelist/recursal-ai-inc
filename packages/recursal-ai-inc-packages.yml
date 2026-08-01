@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://featherless.ai/docs/quickstart-guide
+summary: >-
+  Recursal AI / Featherless does not publish a first-party client SDK. Because
+  the inference API is OpenAI-compatible, the documentation directs developers
+  to use the standard OpenAI SDKs (Python / JavaScript) with the base URL set to
+  https://api.featherless.ai/v1. The recommended clients below are third-party
+  and are NOT marked official.
+packages:
+- language: python
+  registry: pypi
+  name: openai
+  url: https://pypi.org/project/openai/
+  install: pip install openai
+  official: false
+  note: >-
+    Documented client. Configure OpenAI(base_url="https://api.featherless.ai/v1",
+    api_key="FEATHERLESS_API_KEY").
+- language: javascript
+  registry: npm
+  name: openai
+  url: https://www.npmjs.com/package/openai
+  install: npm install openai
+  official: false
+  note: OpenAI-compatible; set baseURL to https://api.featherless.ai/v1.
+first_party_sdk: false

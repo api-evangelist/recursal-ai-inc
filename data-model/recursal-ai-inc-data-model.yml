@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/recursal-ai-inc-featherless-openapi.yml
+entities:
+- name: Model
+  description: An open-weight model available for inference (Hugging Face model id).
+  id_field: id
+  operations: [listModels]
+- name: ChatCompletion
+  description: A generated chat response for a list of messages.
+  operations: [createChatCompletion]
+- name: Completion
+  description: A generated text completion for a prompt.
+  operations: [createCompletion]
+- name: Plan
+  description: The authenticated account's subscription plan and concurrency budget.
+  operations: [getPlan]
+relationships:
+- from: ChatCompletion
+  to: Model
+  kind: belongs_to
+  via: model
+- from: Completion
+  to: Model
+  kind: belongs_to
+  via: model
+notes: >-
+  The API is stateless inference: requests reference a Model by id but the
+  provider does not expose persistent resource entities beyond the model
+  catalog and the account plan.

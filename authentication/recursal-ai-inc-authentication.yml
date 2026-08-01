@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/recursal-ai-inc-featherless-openapi.yml
+docs: https://featherless.ai/docs/quickstart-guide
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Featherless API key supplied as an HTTP Bearer token (Authorization: Bearer
+    FEATHERLESS_API_KEY). Keys are created in account settings.'
+  sources:
+  - openapi/recursal-ai-inc-featherless-openapi.yml

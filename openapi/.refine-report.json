@@ -1,0 +1,18 @@
+{
+  "provider": "recursal-ai-inc",
+  "sources": [
+    "recursal-ai-inc-account-api-openapi.yml",
+    "recursal-ai-inc-chat-api-openapi.yml",
+    "recursal-ai-inc-models-api-openapi.yml"
+  ],
+  "outputs": [
+    "recursal-ai-inc-account-api-openapi.yml",
+    "recursal-ai-inc-chat-api-openapi.yml",
+    "recursal-ai-inc-models-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

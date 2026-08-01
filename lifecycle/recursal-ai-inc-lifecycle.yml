@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: searched
+source: https://featherless.ai/docs/overview
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://featherless.ai/docs/api-overview-and-common-options
+status_page: https://featherless.ai/status
+model_releases: https://featherless.ai/model-releases/latest
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/Sunset-header policy is published.
+sla:
+  url: null
+  note: Flat-rate plans; no published numeric uptime SLA found.
+deprecated_operations: []

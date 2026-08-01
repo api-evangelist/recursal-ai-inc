@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://featherless.ai/docs/api-overview-and-common-options
+summary: >-
+  Featherless AI exposes an OpenAI-compatible REST API. It is a drop-in
+  replacement for the OpenAI SDK by changing only the base URL. Cross-cutting
+  semantics below are captured from the published developer documentation.
+authentication:
+  style: http-bearer
+  header: 'Authorization: Bearer FEATHERLESS_API_KEY'
+  docs: https://featherless.ai/docs/quickstart-guide
+  see: authentication/recursal-ai-inc-authentication.yml
+compatibility:
+  openai_compatible: true
+  base_url: https://api.featherless.ai/v1
+  note: >-
+    Existing OpenAI client libraries work with minimal configuration changes;
+    set base_url to https://api.featherless.ai/v1.
+attribution_headers:
+- name: HTTP-Referer
+  purpose: Identify the calling application/site for support.
+  required: false
+- name: X-Title
+  purpose: Name the calling application for support attribution.
+  required: false
+streaming:
+  supported: true
+  mechanism: server-sent-events
+  trigger: 'set stream=true on chat/completions or completions requests'
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header is documented. Inference requests are not
+    idempotent by nature.
+pagination:
+  documented: false
+  note: The models list endpoint returns the full catalog; no pagination is documented.
+concurrency:
+  model: concurrency-based subscriptions (reserved concurrent units per plan)
+  over_limit_status: 429
+  see: rate-limits/recursal-ai-inc-rate-limits.yml
+versioning:
+  scheme: uri-path
+  current: v1
+error_envelope:
+  see: errors/recursal-ai-inc-problem-types.yml
+privacy:
+  logging: 'No logging of prompts or chat history (per provider policy).'

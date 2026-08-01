@@ -1,0 +1,94 @@
+# Featherless.ai
+
+> Serverless AI inference platform providing unlimited API access to thousands of open-weight models with flat-rate pricing
+
+Featherless.ai is a serverless AI inference platform that provides API access to open-weight AI models from Hugging Face. Our unique GPU orchestration allows an exceptionally large catalog of models to stay online without users managing infrastructure.
+
+Key features to remember when using Featherless:
+
+- **OpenAI SDK compatible** - drop-in replacement, just change the base URL to https://api.featherless.ai/v1
+- **Flat-rate pricing** - concurrency-based subscriptions. Unlimited monthly requests.
+- **No logging** - we do not log prompts and chat history.
+- **Thousands of models** - from small 7B models to massive 405B+ models
+
+## Documentation
+
+- [Getting Started](https://featherless.ai/docs/getting-started): Quick setup guide and first API call
+- [API Reference](https://featherless.ai/docs/api-overview-and-common-options): Complete API documentation including endpoints, parameters, and response formats
+- [Model Compatibility](https://featherless.ai/docs/model-compatibility): Supported architectures and model requirements
+- [Pricing Plans](https://featherless.ai/docs/plans): API plans (Basic $10, Premium $25, Scale $75+) and Claw agent runtime plans ($100-200)
+- [FAQ](https://featherless.ai/docs/faq): Answers to commonly asked questions
+
+## Integrations
+
+- [WyvernChat] (https://featherless.ai/docs/guides-wyvernchat): WyvernChat integration guide.
+- [LangChain](https://featherless.ai/docs/langchain): Python integration for building LLM applications
+- [LlamaIndex](https://featherless.ai/docs/llamaindex): RAG and data framework integration
+- [LiteLLM](https://featherless.ai/docs/litellm): Unified interface with fallbacks and load balancing
+- [Hugging Face SDK](https://featherless.ai/docs/hugging-face): Direct integration with Hugging Face libraries
+- [Application Guides](https://featherless.ai/docs/application-guides): Integration guides for popular frameworks
+
+## API Inference Plans
+
+Standard API inference plans for model access:
+
+### Basic - $10/month
+- Model size limit: 15B parameters
+- 2 concurrent units
+- Context size up to 16K
+
+### Premium - $25/month
+- Access to DeepSeek, Kimi, and GLM
+- No model size limit
+- 4 concurrent units
+- Context size up to 32K
+
+### Scale - $75/month and up
+- Business plan that can scale to arbitrarily many concurrent units
+- Private, secure, and anonymous usage - no logs
+- Custom scaling based on your needs
+
+## Agent Plans
+
+Agent plans provide agent runtime capabilities with sandbox access:
+
+### Agent Standard - $100/month
+- 1 agent runtime
+- Full inference access
+- Standard sandbox environment
+- Persistent storage
+- Perfect for most agent workflows
+
+### Agent Pro - $200/month
+- 1 agent runtime
+- Full model access
+- Browser-use capabilities
+- Larger sandbox environment
+- Context size up to 256K
+- Ideal for heavier workloads
+
+## Model Catalog
+
+- [Browse All Models](https://featherless.ai/models): Full catalog of available models
+- [Popular Models](https://featherless.ai/models?sort=-downloads): Most downloaded models
+- [Latest Releases](https://featherless.ai/model-releases/latest): Recently added models
+
+## API Endpoints
+
+Quick reference for API endpoints:
+
+- Chat Completions: `POST https://api.featherless.ai/v1/chat/completions`
+- Text Completions: `POST https://api.featherless.ai/v1/completions`
+- Models List: `GET https://api.featherless.ai/v1/models`
+
+## Support
+
+- [Discord Community](https://featherless.ai/discord): Most active support channel with thousands of developers
+- [Status Page](https://featherless.ai/status): Real-time service status and uptime monitoring
+- [Blog](https://featherless.ai/blog): Tutorials, guides, and product updates
+
+## Optional
+
+- [Terms of Service](https://featherless.ai/terms): Legal terms and conditions
+- [Privacy Policy](https://featherless.ai/privacy): Data handling and privacy practices
+- [Cookie Policy](https://featherless.ai/cookie-policy): Cookie usage information

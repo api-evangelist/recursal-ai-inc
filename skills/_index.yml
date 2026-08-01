@@ -1,0 +1,12 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/recursal-ai-inc-featherless-openapi.yml
+skills:
+- file: recursal-ai-inc-chat-with-a-model.md
+  name: Chat with an open-weight model on Featherless
+  api: openapi/recursal-ai-inc-featherless-openapi.yml
+  operations: [listModels, createChatCompletion]
+- file: recursal-ai-inc-stream-a-completion.md
+  name: Stream a chat completion from Featherless
+  api: openapi/recursal-ai-inc-featherless-openapi.yml
+  operations: [createChatCompletion]

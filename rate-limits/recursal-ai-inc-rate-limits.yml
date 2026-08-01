@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://featherless.ai/docs/concurrency-limits
+model: concurrency-based
+summary: >-
+  Featherless does not meter per-token or per-request rate limits; plans instead
+  reserve a budget of concurrent units. Requests that would take total reserved
+  units above the plan budget are rejected with HTTP 429. Monthly requests are
+  unlimited.
+over_limit:
+  status: 429
+  reason: Reserved concurrent-unit budget exceeded.
+monitoring_endpoint: /account/concurrency/stream
+plans:
+- name: Premium
+  price_usd_month: 25
+  concurrent_connections: 4
+  context_window: 32K
+- name: Agent Standard
+  price_usd_month: 100
+  concurrent_connections: 8
+  context_window: 256K
+- name: Agent Pro
+  price_usd_month: 200
+  concurrent_connections: null
+  context_window: 256K
+  note: Unlimited model access, larger sandbox.
+notes: >-
+  Concurrent-connection figures are from the public pricing page; exact
+  plan-specific reserved concurrent-unit values are documented at
+  https://featherless.ai/docs/plans.

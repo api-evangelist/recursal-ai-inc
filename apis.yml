@@ -1,9 +1,30 @@
 aid: recursal-ai-inc
 name: Recursal AI, Inc.
-description: Recursal AI, Inc. is a company surfaced as a portfolio company of 500-global and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Recursal AI, Inc. operates Featherless AI, a serverless AI inference platform
+  that provides unified, OpenAI-compatible API access to tens of thousands of
+  open-weight large language models sourced from Hugging Face. A single API key
+  and base URL (https://api.featherless.ai/v1) give developers drop-in access to
+  models ranging from small 7B instruct models to 405B-plus parameter models,
+  under flat-rate, concurrency-based subscriptions with unlimited monthly
+  requests and a no-logging policy on prompts and chat history. The platform is
+  built by researchers who contribute to RWKV, a Linux Foundation project, and
+  has raised a $20M Series A. Recursal AI was surfaced as a portfolio company of
+  500 Global and enriched by the API Evangelist pipeline.
 url: https://raw.githubusercontent.com/api-evangelist/recursal-ai-inc/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/6979c6c70c21b50639123793/69a171cf1a87499ba814df9c_OG%20Image_%20Home.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,15 +33,119 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Artificial Intelligence
+- Machine Learning
+- LLM
+- Inference
+- Serverless
+- Generative AI
+- Developer Tools
+- OpenAI Compatible
+- RWKV
+apis:
+- aid: recursal-ai-inc:recursal-ai-inc-account-api
+  name: Recursal AI, Inc. Account API
+  description: Plan and concurrency information
+  humanURL: https://featherless.ai/docs/overview
+  baseURL: https://api.featherless.ai/v1
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/recursal-ai-inc-account-api-openapi.yml
+  - type: Documentation
+    url: https://featherless.ai/docs/api-overview-and-common-options
+- aid: recursal-ai-inc:recursal-ai-inc-chat-api
+  name: Recursal AI, Inc. Chat API
+  description: OpenAI-compatible chat and text completion generation
+  humanURL: https://featherless.ai/docs/overview
+  baseURL: https://api.featherless.ai/v1
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/recursal-ai-inc-chat-api-openapi.yml
+  - type: Documentation
+    url: https://featherless.ai/docs/api-overview-and-common-options
+- aid: recursal-ai-inc:recursal-ai-inc-models-api
+  name: Recursal AI, Inc. Models API
+  description: Model catalog and metadata
+  humanURL: https://featherless.ai/docs/overview
+  baseURL: https://api.featherless.ai/v1
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/recursal-ai-inc-models-api-openapi.yml
+  - type: Documentation
+    url: https://featherless.ai/docs/api-overview-and-common-options
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/recursal-ai-inc-domain-security.yml
 - type: Website
+  url: https://featherless.ai
+- type: CompanyWebsite
   url: https://recursal.ai
+- type: DeveloperPortal
+  url: https://featherless.ai/docs/overview
+- type: Documentation
+  url: https://featherless.ai/docs/overview
+- type: APIReference
+  url: https://featherless.ai/docs/api-overview-and-common-options
+- type: GettingStarted
+  url: https://featherless.ai/docs/getting-started
+- type: Quickstart
+  url: https://featherless.ai/docs/quickstart-guide
+- type: Pricing
+  url: https://featherless.ai/#pricing
+- type: SignUp
+  url: https://featherless.ai/register
+- type: TermsOfService
+  url: https://featherless.ai/terms
+- type: PrivacyPolicy
+  url: https://featherless.ai/privacy
+- type: Blog
+  url: https://featherless.ai/blog
+- type: Support
+  url: https://featherless.ai/discord
+- type: GitHubOrganization
+  url: https://github.com/recursal
+- type: StatusPage
+  url: https://featherless.ai/status
+- type: Models
+  url: https://featherless.ai/models
+- type: LLMsTxt
+  url: llms/recursal-ai-inc-llms.txt
+- type: Authentication
+  url: authentication/recursal-ai-inc-authentication.yml
+- type: Conventions
+  url: conventions/recursal-ai-inc-conventions.yml
+- type: RateLimits
+  url: rate-limits/recursal-ai-inc-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/recursal-ai-inc-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/recursal-ai-inc-lifecycle.yml
+- type: Conformance
+  url: conformance/recursal-ai-inc-conformance.yml
+- type: DataModel
+  url: data-model/recursal-ai-inc-data-model.yml
+- type: MCPServer
+  url: mcp/recursal-ai-inc-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/recursal-ai-inc-agentic-access.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

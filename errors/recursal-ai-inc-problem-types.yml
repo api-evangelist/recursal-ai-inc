@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://featherless.ai/docs/api-reference-error-codes
+format: json
+envelope: >-
+  Errors are returned as a JSON object; the exact envelope is not published in
+  the error-codes reference. OpenAI-compatible clients surface the standard
+  {"error": {...}} shape.
+problems:
+- status: 400
+  title: This model is cold / not ready for inference
+  meaning: >-
+    The model exists but has not been loaded into GPU. Models have three states:
+    cold, loading, and warm.
+  remediation: >-
+    Load/warm the model first. Warm-up time varies by model size (5 minutes to
+    1 hour).
+  source_operation: openapi/recursal-ai-inc-featherless-openapi.yml#createChatCompletion
+- status: 401
+  title: Unauthenticated
+  meaning: API key is invalid or unrecognized.
+  remediation: Verify the API key was copied correctly; create a new one if needed.
+  source_operation: openapi/recursal-ai-inc-featherless-openapi.yml#createChatCompletion
+- status: 403
+  title: Unauthorized (gated model)
+  meaning: >-
+    The model is gated and you need to agree to the model's license before using
+    it.
+  remediation: >-
+    Visit the model's page and click the "Unlock Model" button to accept terms.
+  source_operation: openapi/recursal-ai-inc-featherless-openapi.yml#createChatCompletion
+- status: 429
+  title: Concurrency limit exceeded
+  meaning: >-
+    The request would take total reserved units above the plan's concurrent-unit
+    budget.
+  remediation: >-
+    Reduce concurrent in-flight requests or upgrade the plan for more concurrent
+    units.
+  source_operation: openapi/recursal-ai-inc-featherless-openapi.yml#createChatCompletion
+- status: 500
+  title: Internal server error
+  meaning: Backend failure on Featherless infrastructure.
+  remediation: The error is logged for staff review; retry later.
+  source_operation: openapi/recursal-ai-inc-featherless-openapi.yml#createChatCompletion
+- status: 503
+  title: Service temporarily unavailable
+  meaning: Insufficient model capacity due to exceeding backend GPU load.
+  remediation: >-
+    Retry the request; if it persists after three retries the model class may be
+    temporarily unavailable.
+  source_operation: openapi/recursal-ai-inc-featherless-openapi.yml#createChatCompletion

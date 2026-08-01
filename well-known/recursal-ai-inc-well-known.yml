@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: live probes 2026-07-21
+hosts:
+- host: https://featherless.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.featherless.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://recursal.ai
+  note: >-
+    recursal.ai 302-redirects all paths to https://featherless.ai/ (HTML
+    homepage); no real well-known documents are served.
+result: none

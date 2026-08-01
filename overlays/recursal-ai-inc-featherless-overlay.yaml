@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Featherless AI Serverless Inference API
+  version: 1.0.0
+extends: openapi/recursal-ai-inc-featherless-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: recursal-ai-inc
+    x-apievangelist-brand: Featherless AI
+    x-apievangelist-openai-compatible: true
+    x-apievangelist-note: >-
+      Captured by API Evangelist from published developer documentation; the
+      provider does not publish a machine-readable OpenAPI document.
+- target: $.info
+  update:
+    x-artifacts:
+      authentication: authentication/recursal-ai-inc-authentication.yml
+      conventions: conventions/recursal-ai-inc-conventions.yml
+      errors: errors/recursal-ai-inc-problem-types.yml
+      rate_limits: rate-limits/recursal-ai-inc-rate-limits.yml
+      lifecycle: lifecycle/recursal-ai-inc-lifecycle.yml
