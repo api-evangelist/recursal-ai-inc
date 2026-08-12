@@ -88,6 +88,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/recursal-ai-inc-featherless-overlay.yaml
 - type: DomainSecurity
   url: security/recursal-ai-inc-domain-security.yml
 - type: Website
