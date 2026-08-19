@@ -1,0 +1,162 @@
+{
+  "item": [
+    {
+      "id": "592cc71f-0837-4f09-bd50-8064f7d18795",
+      "name": "Account",
+      "description": {
+        "content": "Plan and concurrency information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58e2ff62-7ac9-41b0-8b08-370da71d2a14",
+          "name": "Get current plan",
+          "request": {
+            "name": "Get current plan",
+            "description": {
+              "content": "Return information about the authenticated account's subscription plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "plan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14552342-60ad-4e5e-be59-ed26c16282d6",
+              "name": "Plan information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8791c9a7-59d5-45ce-a437-2c96af9dc4cd",
+              "name": "API key is invalid or unrecognized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.featherless.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d484e2c5-209c-4b98-a931-69be983b5efa",
+    "name": "Featherless AI Serverless Inference Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Faithful capture of the publicly documented, OpenAI-compatible serverless inference API operated by Recursal AI, Inc. under the Featherless AI brand. Only endpoints, methods, the Bearer security scheme, and parameters that Featherless publishes in its developer documentation are represented here; request/response schemas are intentionally minimal and honest rather than exhaustive. Base URL and auth per https://featherless.ai/docs/quickstart-guide.",
+      "type": "text/plain"
+    }
+  }
+}

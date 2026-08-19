@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Featherless AI Serverless Inference Account Models API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.featherless.ai/v1/models"
+          },
+          "docs": "Return the catalog of open-weight models available for inference (thousands of models from Hugging Face)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

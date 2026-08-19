@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Featherless AI Serverless Inference Account Chat API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a chat completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.featherless.ai/v1/chat/completions",
+            "headers": [
+              {
+                "name": "HTTP-Referer",
+                "value": ""
+              },
+              {
+                "name": "X-Title",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a model response for a chat conversation. OpenAI-compatible; set stream=true for server-sent-event token streaming."
+        },
+        {
+          "info": {
+            "name": "Create a text completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.featherless.ai/v1/completions",
+            "headers": [
+              {
+                "name": "HTTP-Referer",
+                "value": ""
+              },
+              {
+                "name": "X-Title",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "OpenAI-compatible text (prompt) completion."
+        },
+        {
+          "info": {
+            "name": "Tokenize text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.featherless.ai/v1/tokenize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return the tokenization of the supplied text for a given model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

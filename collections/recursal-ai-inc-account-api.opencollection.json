@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Featherless AI Serverless Inference Account API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.featherless.ai/v1/plan"
+          },
+          "docs": "Return information about the authenticated account's subscription plan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
