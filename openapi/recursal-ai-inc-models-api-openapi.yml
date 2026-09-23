@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Featherless AI Serverless Inference Account Models API
+  title: Featherless AI Serverless Inference Models API
   version: '1.0'
   description: Faithful capture of the publicly documented, OpenAI-compatible serverless inference API operated by Recursal AI, Inc. under the Featherless AI brand. Only endpoints, methods, the Bearer security scheme, and parameters that Featherless publishes in its developer documentation are represented here; request/response schemas are intentionally minimal and honest rather than exhaustive. Base URL and auth per https://featherless.ai/docs/quickstart-guide.
   x-generated: '2026-07-21'

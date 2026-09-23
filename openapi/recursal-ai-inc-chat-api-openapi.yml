@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Featherless AI Serverless Inference Account Chat API
+  title: Featherless AI Serverless Inference Chat API
   version: '1.0'
   description: Faithful capture of the publicly documented, OpenAI-compatible serverless inference API operated by Recursal AI, Inc. under the Featherless AI brand. Only endpoints, methods, the Bearer security scheme, and parameters that Featherless publishes in its developer documentation are represented here; request/response schemas are intentionally minimal and honest rather than exhaustive. Base URL and auth per https://featherless.ai/docs/quickstart-guide.
   x-generated: '2026-07-21'
@@ -121,43 +121,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthenticated'
 components:
-  responses:
-    ColdModel:
-      description: The model is cold / not yet loaded into GPU for inference.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    GatedModel:
-      description: The model is gated; the account must accept the model license first.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ConcurrencyExceeded:
-      description: The request would exceed the plan's reserved concurrent-unit budget.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    CapacityUnavailable:
-      description: Service temporarily unavailable due to insufficient model capacity.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalError:
-      description: Internal server error on Featherless infrastructure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthenticated:
-      description: API key is invalid or unrecognized.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     ChatCompletionRequest:
       type: object
@@ -181,6 +144,31 @@ components:
           type: number
         top_p:
           type: number
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+            code:
+              type: string
     ChatMessage:
       type: object
       required:
@@ -211,31 +199,43 @@ components:
           type: integer
         temperature:
           type: number
-    ChatCompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-            type:
-              type: string
-            code:
-              type: string
+  responses:
+    ConcurrencyExceeded:
+      description: The request would exceed the plan's reserved concurrent-unit budget.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Internal server error on Featherless infrastructure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    CapacityUnavailable:
+      description: Service temporarily unavailable due to insufficient model capacity.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    GatedModel:
+      description: The model is gated; the account must accept the model license first.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ColdModel:
+      description: The model is cold / not yet loaded into GPU for inference.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthenticated:
+      description: API key is invalid or unrecognized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     HttpReferer:
       name: HTTP-Referer

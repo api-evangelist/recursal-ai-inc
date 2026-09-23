@@ -33,13 +33,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthenticated'
 components:
-  responses:
-    Unauthenticated:
-      description: API key is invalid or unrecognized.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -53,6 +46,13 @@ components:
               type: string
             code:
               type: string
+  responses:
+    Unauthenticated:
+      description: API key is invalid or unrecognized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,9 +1,7 @@
 {
   "provider": "recursal-ai-inc",
   "sources": [
-    "recursal-ai-inc-account-api-openapi.yml",
-    "recursal-ai-inc-chat-api-openapi.yml",
-    "recursal-ai-inc-models-api-openapi.yml"
+    "_ae-authored/recursal-ai-inc-featherless-openapi.yml"
   ],
   "outputs": [
     "recursal-ai-inc-account-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "recursal-ai-inc-account-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "recursal-ai-inc-chat-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "recursal-ai-inc-models-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "recursal-ai-inc-featherless-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "recursal-ai-inc-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "recursal-ai-inc-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "recursal-ai-inc-models-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
